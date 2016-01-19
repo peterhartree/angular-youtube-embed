@@ -169,6 +169,7 @@ angular.module('youtube-embed', ['ng'])
             function createPlayer () {
                 var playerVars = angular.copy(scope.playerVars);
                 playerVars.start = playerVars.start || scope.urlStartTime;
+                playerVars.autoplay = true;
                 var player = new YT.Player(playerId, {
                     height: scope.playerHeight,
                     width: scope.playerWidth,
@@ -185,7 +186,7 @@ angular.module('youtube-embed', ['ng'])
                 return player;
             }
 
-            function loadPlayer () {
+            scope.loadPlayer = function() {
                 if (scope.videoId || scope.playerVars.list) {
                     if (scope.player && typeof scope.player.destroy === 'function') {
                         scope.player.destroy();
@@ -207,12 +208,14 @@ angular.module('youtube-embed', ['ng'])
                     if (ready) {
                         stopWatchingReady();
 
+                        console.log('ready');
+
                         // URL takes first priority
                         if (typeof scope.videoUrl !== 'undefined') {
                             scope.$watch('videoUrl', function (url) {
                                 scope.videoId = scope.utils.getIdFromURL(url);
                                 scope.urlStartTime = scope.utils.getTimeFromURL(url);
-
+                                return; // test
                                 loadPlayer();
                             });
 
@@ -220,6 +223,7 @@ angular.module('youtube-embed', ['ng'])
                         } else if (typeof scope.videoId !== 'undefined') {
                             scope.$watch('videoId', function () {
                                 scope.urlStartTime = null;
+                                return; // test
                                 loadPlayer();
                             });
 
@@ -242,6 +246,7 @@ angular.module('youtube-embed', ['ng'])
             scope.$on('$destroy', function () {
                 scope.player && scope.player.destroy();
             });
-        }
+        },
+        template: '<div class="wrap-youtube-placeholder"><img class="youtube-thumb" ng-click="loadPlayer();" src="//i.ytimg.com/vi/{{videoId}}/hqdefault.jpg"><div ng-click="loadPlayer();" class="play-button"></div></div>'
     };
 }]);
