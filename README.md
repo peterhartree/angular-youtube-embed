@@ -2,9 +2,7 @@
 
 > Embed a YouTube player with a simple directive.
 
-```shell
-$ npm install --save angular-youtube-embed
-```
+This is a fork of brandly/angular-youtube-embed, modified to show a video thumbnail and only load the HTML5 player when a user clicks the "play" button.
 
 ## Can I use it?
 
@@ -34,7 +32,58 @@ myApp.controller('MyCtrl', function ($scope) {
 <youtube-video video-id="theBestVideo"></youtube-video>
 ```
 
-It's that simple. [See it in action.](http://brandly.github.io/angular-youtube-embed/)
+Add an SVG for the play button "play" symbol.
+
+```html
+<svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-play3" viewBox="0 0 1024 1024">
+    <title>Play</title>
+    <path class="path1" d="M192 128l640 384-640 384z"></path>
+    </symbol>
+  </defs>
+</svg>
+
+You'll want to style the wrapper and the play buttons. Maybe something like:
+
+```css
+
+.wrap-youtube-placeholder {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+}
+
+.youtube-thumb {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.play-button {
+  height: 46px;
+  width: 72px;
+  left: 50%;
+  top: 50%;
+  margin-left: -36px;
+  margin-top: -23px;
+  position: absolute;
+  background-color: #222;
+  background-color: #fff;
+  color: #222;
+  font-size: 2rem;
+  text-align: center;
+  transition: 0.25s ease-in-out all;
+}
+
+.play-button .icon {
+  margin-left: 4px;
+}
+```
 
 ## But I only have a URL.
 
