@@ -247,6 +247,6 @@ angular.module('youtube-embed', ['ng'])
                 scope.player && scope.player.destroy();
             });
         },
-        template: '<div class="wrap-youtube-placeholder"><img class="youtube-thumb" ng-click="loadPlayer();" src="//i.ytimg.com/vi/{{videoId}}/hqdefault.jpg"><div ng-click="loadPlayer();" class="play-button"><svg class="icon icon-play3"><use xlink:href="#icon-play3"></use></svg></div></div>'
+        template: '<div class="wrap-youtube-placeholder"><img class="youtube-thumb" ng-click="loadPlayer();" src="//i.ytimg.com/vi/{{videoId}}/hqdefault.jpg"><div ng-click="loadPlayer();" class="play-button"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16" class="icon icon-play3"><path d="M3 2l10 6-10 6z"></path></svg></div></div>'
     };
 }]);
