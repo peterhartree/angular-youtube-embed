@@ -1,12 +1,12 @@
 {
   "name": "angular-youtube-embed",
-  "version": "1.1.1",
-  "author": "Matthew Brandly",
+  "version": "1.2.2",
+  "author": "Peter Hartree (a fork of work by Matthew Brandly)",
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/brandly/angular-youtube-embed.git"
+    "url": "git://github.com/peterhartree/angular-youtube-embed.git"
   },
   "homepage": "http://brandly.github.io/angular-youtube-embed/",
   "scripts": {
